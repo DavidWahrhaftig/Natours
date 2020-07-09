@@ -1,0 +1,15 @@
+@mixin clearfix {
+    // append a pseudo element after the element
+    // to fix container of float collapsing and having no height
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

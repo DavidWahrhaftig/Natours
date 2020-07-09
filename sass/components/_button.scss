@@ -1,0 +1,107 @@
+@import '../abstract/variables'; // optional here
+
+.btn {
+    // for both <button> and <a> elements
+    &, &:link, &:visited { /* pseudo class 'link/visited' which style elements under special conditions */
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem; /* 15 px top and bottom and 40px left adn right*/
+        display: inline-block;
+        border-radius: 10rem;
+        font-size: $default-font-size;
+        
+        /* all properties are enabled to be animated between other pseduo states*/
+        transition: all .2s;
+
+        position:relative; /* so the after element is hidden behind the button*/
+
+        // change for the <button> element
+        border: none;
+        cursor: pointer;
+        
+    }
+    &:hover {
+        /* move up */
+        transform: translateY(-0.3rem); 
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        
+        // .btn:hover::after {
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+            transition: all 0.4s;
+        
+        }
+    }
+    
+    &:active, &:focus {/* active - when clicking an element  */
+        outline: none;
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+    
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%; /* this after element is treated like a child of the btn element*/
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark; 
+
+        // .btn--white::after {
+        &::after {
+            background-color: $color-white;
+        } 
+    }
+    &--green {
+        background-color: $color-primary;
+        color: $color-white; 
+
+        // .btn--white::after {
+        &::after {
+            background-color: $color-primary;
+        } 
+    }
+    
+    &--animated {
+        animation: moveInBottom 1s ease-out .75s;
+        /* applies the styles of the 0% section of the animation before it starts*/
+        animation-fill-mode: backwards; 
+    }
+}
+
+.btn-text {
+    &:link, &:visited { /* pseudo class 'link/visited' which style elements under special conditions */
+        color: $color-primary;
+        font-size: $default-font-size;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 0.1rem solid $color-primary;
+        padding: 1rem;
+        transition: all 0.2s;
+    }
+    
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        border-bottom:none;
+        transform: translateY(-0.2rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    }
+
+    // when clicking button
+    &:active {
+        
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+        transform: translateY(0);
+    }
+}

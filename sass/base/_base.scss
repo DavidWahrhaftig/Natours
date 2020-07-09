@@ -1,0 +1,19 @@
+
+/* default browsers apply certain properties to elements */
+/* This resets the browser applied properties on every element */
+*,
+*::after,
+*::before { /*universal selector*/
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* elements will inherit whatever the parent box-sizing is, as specificed in the body*/
+}
+
+html {
+    /*1rem = 10px now since the root font size is 10px*/
+    /* font-size: 10px;  */
+    
+    /* 62.5% out of 16px is 10px, better to adpat according to browser font-size */
+    // this defines what 1rem is 
+    font-size: 62.5%;
+}

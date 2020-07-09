@@ -1,0 +1,46 @@
+
+@import "../abstract/variables";
+
+.row {
+    // divide px by 10 since we set 1 rem to be 10 px
+    max-width: $grid-width;// common length 1140px;
+    // background-color:#eee;
+    margin: 0 auto; // trick to center block element inside another block element
+    // select everything but the last child -->  row:not(:last-child)
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+    
+    @include clearfix; // a mixin to clear float height issue
+
+
+    [class^="col-"] { // select all classes that start with col-1
+        // background-color: orangered;
+        // color: white;
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+        
+    }
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2); // calculations where you can mix units: rem, px, %
+    }
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3); // calculations where you can mix units: rem, px, %
+    }
+    .col-2-of-3 {
+        width: calc(2 *((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal} ); // calculations where you can mix units: rem, px, %
+    }
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4); // calculations where you can mix units: rem, px, %
+    }
+    .col-2-of-4 {
+        width: calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal}); // calculations where you can mix units: rem, px, %
+    }
+    .col-3-of-4 {
+        width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal}); // calculations where you can mix units: rem, px, %
+    }
+}
