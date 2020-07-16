@@ -9,10 +9,18 @@
     // select everything but the last child -->  row:not(:last-child)
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small; // no need for margins
+        }
     }
     
     @include clearfix; // a mixin to clear float height issue
 
+    @include respond(tab-port) {
+        max-width: 50rem; // no need for margins
+        padding: 0 3rem;
+    }
 
     [class^="col-"] { // select all classes that start with col-1
         // background-color: orangered;
@@ -21,6 +29,15 @@
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {
+                margin-right: 0; // no need for margins
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-port) {
+            width: 100% !important;
         }
         
     }
